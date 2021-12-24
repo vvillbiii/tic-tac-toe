@@ -1,0 +1,44 @@
+body {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap-reverse;
+  background-image: linear-gradient(rgb(102, 15, 102), rgb(19, 19, 68));
+  color: white;
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: "Orbitron", sans-serif;
+}
+
+h1 {
+  color: white;
+  font-size: 5em;
+}
+
+h2 {
+  font-size: 6em;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+}
+
+.grid-row {
+  height: 300px;
+  width: 300px;
+  outline: 4px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-btn {
+  width: 100px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: transparent;
+  outline: 4px solid white;
+  color: white;
+}
