@@ -1,141 +1,50 @@
 const playerX = "X";
 const playerO = "O";
+let currentPlayer = playerX;
 
-const gameBoard = Array.from(document.querySelectorAll(".grid-row"));
-// console.log(gameBoard);
+const gameBoard = document.querySelectorAll(".grid-row");
+const gameContainer = document.querySelector(".game");
+for (let board of gameBoard) {
+  board.addEventListener("click", function () {
+    board.innerText = currentPlayer;
+    if (currentPlayer == playerO) {
+      board.classList.add("playerO");
+      // console.log("switch to X");
+      currentPlayer = playerX;
+    } else {
+      playerTurn();
+      board.classList.add("playerX");
+    }
+  });
+}
 
 /// push playerX choice to gameBoard
-
 /// push playerO choice to gameBoard
 
 // write conditional for player turn
 const playerTurn = () => {
-  // if (playerX choose x){
-  // playerX go
-  // } else {
-  //  playerO go
-  // }
+  if (currentPlayer === playerX) {
+    currentPlayer = playerO;
+  }
 };
 
 // if playerX presses x push x to gameBoard array to fill the spot. Then create a condition that says if gameBoard array indices have a  x, o then they can't be changed.
 
-function playX() {
-  const textX = document.createElement("h2");
-  const addMove = document.createTextNode("X");
-  textX.appendChild(addMove);
-  document.querySelector(".grid-row").appendChild(textX);
-}
+// Need three functions
 
-function playO() {
-  const textO = document.createElement("h2");
-  const addMove = document.createTextNode("O");
-  textO.appendChild(addMove);
-  document.querySelector(".grid-row").appendChild(textO);
-  //   console.log("O");
-}
-//rest game event listener
+// reset  game function
 const resetBtn = document.querySelector(".reset-btn");
 resetBtn.addEventListener("click", resetGame);
 
 function resetGame() {
-  console.log("reset game");
+  currentPlayer = playerX;
+  for (let board of gameBoard) {
+    board.innerText = "";
+    board.classList.remove("playerX");
+    board.classList.remove("playerO");
+  }
 }
 
-//when a player event trigger it should replace the "x" or 'o' string in my forEach loop.
-// need to make player choice function that calls the player choice inside the forEach loop.
+///Select grid function
 
-//forEach loop
-gameBoard.forEach((element, index) => {
-  if (index === 0) {
-    element.addEventListener("click", () => {
-      const textX = document.createElement("h2");
-      const addMove = document.createTextNode("X");
-      textX.appendChild(addMove);
-      element.appendChild(textX);
-    });
-    gameBoard.splice(index, 1, "X");
-  } else if (index === 1) {
-    // console.log("o");
-    element.addEventListener("click", () => {
-      const textO = document.createElement("h2");
-      const addMove = document.createTextNode("O");
-      textO.appendChild(addMove);
-      element.appendChild(textO);
-    });
-    gameBoard.splice(index, 1, "o");
-  } else if (index === 2) {
-    // console.log("x");
-    element.addEventListener("click", () => {
-      const textX = document.createElement("h2");
-      const addMove = document.createTextNode("X");
-      textX.appendChild(addMove);
-      element.appendChild(textX);
-    });
-    gameBoard.splice(index, 1, "x");
-  } else if (index === 3) {
-    // console.log("o");
-    element.addEventListener("click", () => {
-      const textO = document.createElement("h2");
-      const addMove = document.createTextNode("O");
-      textO.appendChild(addMove);
-      element.appendChild(textO);
-    });
-    gameBoard.splice(index, 1, "o");
-  } else if (index === 4) {
-    // console.log("x");
-    element.addEventListener("click", () => {
-      const textX = document.createElement("h2");
-      const addMove = document.createTextNode("X");
-      textX.appendChild(addMove);
-      element.appendChild(textX);
-    });
-    gameBoard.splice(index, 1, "x");
-  } else if (index === 5) {
-    // console.log("o");
-    element.addEventListener("click", () => {
-      const textO = document.createElement("h2");
-      const addMove = document.createTextNode("O");
-      textO.appendChild(addMove);
-      element.appendChild(textO);
-    });
-    gameBoard.splice(index, 1, "o");
-  } else if (index === 6) {
-    // console.log("x");
-    element.addEventListener("click", () => {
-      const textX = document.createElement("h2");
-      const addMove = document.createTextNode("X");
-      textX.appendChild(addMove);
-      element.appendChild(textX);
-    });
-    gameBoard.splice(index, 1, "x");
-  } else if (index === 7) {
-    // console.log("o");
-    element.addEventListener("click", () => {
-      const textO = document.createElement("h2");
-      const addMove = document.createTextNode("O");
-      textO.appendChild(addMove);
-      element.appendChild(textO);
-    });
-    gameBoard.splice(index, 1, "o");
-  } else if (index === 8) {
-    // console.log("x");
-    element.addEventListener("click", () => {
-      const textX = document.createElement("h2");
-      const addMove = document.createTextNode("X");
-      textX.appendChild(addMove);
-      element.appendChild(textX);
-    });
-    gameBoard.splice(index, 1, "x");
-  } else {
-    // console.log("o");
-    element.addEventListener("click", () => {
-      const textO = document.createElement("h2");
-      const addMove = document.createTextNode("O");
-      textO.appendChild(addMove);
-      element.appendChild(textO);
-    });
-    gameBoard.splice(index, 1, "o");
-  }
-});
-
-// console.log(gameBoard);
+///player win function

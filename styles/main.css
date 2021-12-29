@@ -14,6 +14,7 @@ body {
 h1 {
   color: white;
   font-size: 5em;
+  letter-spacing: 2px;
 }
 
 h2 {
@@ -35,10 +36,25 @@ h2 {
 }
 
 .reset-btn {
-  width: 100px;
+  width: 150px;
   margin-top: 20px;
   padding: 10px;
   background-color: transparent;
   outline: 4px solid white;
+  color: white;
+  border-radius: 3em;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 2px;
+}
+
+.playerX {
+  background-color: white;
+  font-size: 6em;
+  color: black;
+}
+
+.playerO {
+  background-color: black;
+  font-size: 6em;
   color: white;
 }
