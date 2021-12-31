@@ -2,35 +2,35 @@ const playerX = "X";
 const playerO = "O";
 let currentPlayer = playerX;
 
+const headingTwo = document.querySelector(".turn");
 const gameBoard = document.querySelectorAll(".grid-row");
-const gameContainer = document.querySelector(".game");
+const gameArray = Array.from(document.querySelectorAll(".grid-row"));
+
 for (let board of gameBoard) {
-  board.addEventListener("click", function () {
-    board.innerText = currentPlayer;
-    if (currentPlayer == playerO) {
-      board.classList.add("playerO");
-      // console.log("switch to X");
-      currentPlayer = playerX;
-    } else {
-      playerTurn();
-      board.classList.add("playerX");
-    }
-  });
+  board.addEventListener("click", playMove);
 }
 
-/// push playerX choice to gameBoard
-/// push playerO choice to gameBoard
+function playMove() {
+  this.innerText = currentPlayer;
+  checkWinner();
+  this.style.pointerEvents = "none";
+  if (currentPlayer === playerO) {
+    this.classList.add("playerO");
+    currentPlayer = playerX;
+    headingTwo.innerText = `Play ${currentPlayer}`;
+  } else {
+    playerTurn();
+    this.classList.add("playerX");
+  }
+}
 
-// write conditional for player turn
+// write conditional for currentPlayer turn
 const playerTurn = () => {
   if (currentPlayer === playerX) {
     currentPlayer = playerO;
+    headingTwo.innerText = `Play ${currentPlayer}`;
   }
 };
-
-// if playerX presses x push x to gameBoard array to fill the spot. Then create a condition that says if gameBoard array indices have a  x, o then they can't be changed.
-
-// Need three functions
 
 // reset  game function
 const resetBtn = document.querySelector(".reset-btn");
@@ -38,13 +38,133 @@ resetBtn.addEventListener("click", resetGame);
 
 function resetGame() {
   currentPlayer = playerX;
+  headingTwo.innerText = `Play X`;
   for (let board of gameBoard) {
     board.innerText = "";
     board.classList.remove("playerX");
     board.classList.remove("playerO");
+    board.style.pointerEvents = "auto";
   }
 }
 
-///Select grid function
+// currentPlayer win function
+function checkWinner() {
+  let msg = `${currentPlayer} won! Reset to Play again`;
+  headingTwo.innerText = msg;
+  if (
+    currentPlayer === gameArray[0].innerText &&
+    currentPlayer === gameArray[1].innerText &&
+    currentPlayer === gameArray[2].innerText
+  ) {
+    headingTwo.innerText = msg;
+    for (let board of gameBoard) {
+      board.style.pointerEvents = "none";
+    }
+    currentPlayer = null;
+    return true;
+  }
+  if (
+    currentPlayer === gameArray[3].innerText &&
+    currentPlayer === gameArray[4].innerText &&
+    currentPlayer === gameArray[5].innerText
+  ) {
+    headingTwo.innerText = msg;
+    for (let board of gameBoard) {
+      board.style.pointerEvents = "none";
+    }
+    currentPlayer = null;
+    return true;
+  }
+  if (
+    currentPlayer === gameArray[6].innerText &&
+    currentPlayer === gameArray[7].innerText &&
+    currentPlayer === gameArray[8].innerText
+  ) {
+    headingTwo.innerText = msg;
+    for (let board of gameBoard) {
+      board.style.pointerEvents = "none";
+    }
+    currentPlayer = null;
+    return true;
+  }
+  if (
+    currentPlayer === gameArray[0].innerText &&
+    currentPlayer === gameArray[3].innerText &&
+    currentPlayer === gameArray[6].innerText
+  ) {
+    headingTwo.innerText = msg;
+    for (let board of gameBoard) {
+      board.style.pointerEvents = "none";
+    }
+    currentPlayer = null;
+    return true;
+  }
+  if (
+    currentPlayer === gameArray[1].innerText &&
+    currentPlayer === gameArray[4].innerText &&
+    currentPlayer === gameArray[7].innerText
+  ) {
+    headingTwo.innerText = msg;
+    for (let board of gameBoard) {
+      board.style.pointerEvents = "none";
+    }
+    currentPlayer = null;
+    return true;
+  }
+  if (
+    currentPlayer === gameArray[2].innerText &&
+    currentPlayer === gameArray[5].innerText &&
+    currentPlayer === gameArray[8].innerText
+  ) {
+    headingTwo.innerText = msg;
+    for (let board of gameBoard) {
+      board.style.pointerEvents = "none";
+    }
+    currentPlayer = null;
+    return true;
+  }
+  if (
+    currentPlayer === gameArray[0].innerText &&
+    currentPlayer === gameArray[4].innerText &&
+    currentPlayer === gameArray[8].innerText
+  ) {
+    headingTwo.innerText = msg;
+    for (let board of gameBoard) {
+      board.style.pointerEvents = "none";
+    }
+    currentPlayer = null;
+    return true;
+  }
+  if (
+    currentPlayer === gameArray[6].innerText &&
+    currentPlayer === gameArray[4].innerText &&
+    currentPlayer === gameArray[2].innerText
+  ) {
+    headingTwo.innerText = msg;
+    for (let board of gameBoard) {
+      board.style.pointerEvents = "none";
+    }
+    currentPlayer = null;
+    return true;
+  }
+}
 
-///player win function
+// Detect draw conditions (ties/cat's game)
+function draw() {
+  // gameArray.forEach((element, index) => {
+  //   if (
+  //     gameArray[0].innerText === "X" ||
+  //     (gameArray[0].innerText == "O" && gameArray[1].innerText === "X") ||
+  //     (gameArray[1].innerText == "O" && gameArray[2].innerText === "X") ||
+  //     (gameArray[2].innerText == "O" && gameArray[3].innerText === "X") ||
+  //     (gameArray[3].innerText == "O" && gameArray[4].innerText === "X") ||
+  //     (gameArray[4].innerText == "O" && gameArray[5].innerText === "X") ||
+  //     (gameArray[5].innerText == "O" && gameArray[6].innerText === "X") ||
+  //     (gameArray[6].innerText == "O" && gameArray[7].innerText === "X") ||
+  //     (gameArray[7].innerText == "O" && gameArray[8].innerText === "X") ||
+  //     gameArray[8].innerText == "O"
+  //   ) {
+  //     console.log("Draw");
+  //     return true;
+  //   }
+}
