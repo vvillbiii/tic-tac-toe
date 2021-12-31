@@ -147,24 +147,22 @@ function checkWinner() {
     currentPlayer = null;
     return true;
   }
-}
-
-// Detect draw conditions (ties/cat's game)
-function draw() {
-  // gameArray.forEach((element, index) => {
-  //   if (
-  //     gameArray[0].innerText === "X" ||
-  //     (gameArray[0].innerText == "O" && gameArray[1].innerText === "X") ||
-  //     (gameArray[1].innerText == "O" && gameArray[2].innerText === "X") ||
-  //     (gameArray[2].innerText == "O" && gameArray[3].innerText === "X") ||
-  //     (gameArray[3].innerText == "O" && gameArray[4].innerText === "X") ||
-  //     (gameArray[4].innerText == "O" && gameArray[5].innerText === "X") ||
-  //     (gameArray[5].innerText == "O" && gameArray[6].innerText === "X") ||
-  //     (gameArray[6].innerText == "O" && gameArray[7].innerText === "X") ||
-  //     (gameArray[7].innerText == "O" && gameArray[8].innerText === "X") ||
-  //     gameArray[8].innerText == "O"
-  //   ) {
-  //     console.log("Draw");
-  //     return true;
-  //   }
+  if (
+    (gameArray[0].innerText === "X" || gameArray[0].innerText === "O") &&
+    (gameArray[1].innerText === "X" || gameArray[1].innerText === "O") &&
+    (gameArray[2].innerText === "X" || gameArray[2].innerText === "O") &&
+    (gameArray[3].innerText === "X" || gameArray[3].innerText === "O") &&
+    (gameArray[4].innerText === "X" || gameArray[4].innerText === "O") &&
+    (gameArray[5].innerText === "X" || gameArray[5].innerText === "O") &&
+    (gameArray[6].innerText === "X" || gameArray[6].innerText === "O") &&
+    (gameArray[7].innerText === "X" || gameArray[7].innerText === "O") &&
+    (gameArray[8].innerText === "X" || gameArray[8].innerText === "O")
+  ) {
+    headingTwo.innerText = `No Winner. Play again.`;
+    for (let board of gameBoard) {
+      board.style.pointerEvents = "none";
+    }
+    currentPlayer = null;
+    return true;
+  }
 }
